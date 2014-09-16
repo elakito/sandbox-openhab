@@ -1,35 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<parent>
-		<groupId>org.openhab.bundles</groupId>
-		<artifactId>binding</artifactId>
-		<version>1.6.0-SNAPSHOT</version>
-	</parent>
+  <parent>
+    <groupId>org.openhab.bundles</groupId>
+    <artifactId>binding</artifactId>
+    <version>1.6.0-SNAPSHOT</version>
+  </parent>
 
-	<properties>
-		<bundle.symbolicName>org.openhab.binding.websocketclient</bundle.symbolicName>
-		<bundle.namespace>org.openhab.binding.websocketclient</bundle.namespace>
-		<deb.name>openhab-addon-binding-WebsocketClient</deb.name>
-		<deb.description>openhab addon binding WebsocketClient</deb.description>
-	</properties>
+  <properties>
+    <bundle.symbolicName>org.openhab.binding.websocketclient</bundle.symbolicName>
+    <bundle.namespace>org.openhab.binding.websocketclient</bundle.namespace>
+    <deb.name>openhab-addon-binding-WebsocketClient</deb.name>
+    <deb.description>openhab addon binding WebsocketClient</deb.description>
+  </properties>
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.openhab.binding</groupId>
-	<artifactId>org.openhab.binding.websocketclient</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.openhab.binding</groupId>
+  <artifactId>org.openhab.binding.websocketclient</artifactId>
 
-	<name>openHAB WebsocketClient Binding</name>
+  <name>openHAB WebsocketClient Binding</name>
 
-	<packaging>eclipse-plugin</packaging>
+  <packaging>eclipse-plugin</packaging>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.vafer</groupId>
-				<artifactId>jdeb</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <execution>
+	    <id>copy</id>
+	    <phase>process-sources</phase>
+	    <goals>
+              <goal>copy</goal>
+	    </goals>
+	    <configuration>
+              <artifactItems>
+		<artifactItem>
+		  <groupId>com.ning</groupId>
+		  <artifactId>async-http-client</artifactId>
+		  <version>1.8.5</version>
+		  <type>jar</type>
+		</artifactItem>
+		<artifactItem>
+		  <groupId>io.netty</groupId>
+		  <artifactId>netty</artifactId>
+		  <version>3.9.4.Final</version>
+		  <type>jar</type>
+		</artifactItem>
+              </artifactItems>
+              <outputDirectory>${basedir}/lib</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+	    </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.vafer</groupId>
+        <artifactId>jdeb</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

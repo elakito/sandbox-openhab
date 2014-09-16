@@ -57,9 +57,12 @@ public class WebsocketClientBinding extends AbstractActiveBinding<WebsocketClien
     /** RegEx to extract a parse a function String <code>'(.*?)\((.*)\)'</code> */
     private static final Pattern EXTRACT_FUNCTION_PATTERN = Pattern.compile("(.*?)\\((.*)\\)");
 
+	// flag to use the reply of the remote end to update the status of the Item receving the data
+	private static boolean updateWithResponse = true;
+
     /** 
-     * the refresh interval which is used to poll values from the WebsocketClient
-     * server (optional, defaults to 60000ms)
+     * the refresh interval which is used to check if the inbound connection is open
+     * (optional, defaults to 60000ms)
      */
     private long refreshInterval = 60000;
 
@@ -70,7 +73,6 @@ public class WebsocketClientBinding extends AbstractActiveBinding<WebsocketClien
         this.clientManager = new WebsocketClientManager(this);
     }
                 
-        
     public void activate() {
         logger.debug("activate");
         super.activate();
@@ -84,7 +86,6 @@ public class WebsocketClientBinding extends AbstractActiveBinding<WebsocketClien
         logger.debug("deactivate");
         clientManager.release();
     }
-
 
     @Override
     public void bindingChanged(BindingProvider provider, String itemName) {

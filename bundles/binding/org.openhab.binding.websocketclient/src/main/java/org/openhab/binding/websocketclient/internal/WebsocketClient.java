@@ -24,9 +24,12 @@ class WebsocketClient {
     private WebsocketClientManager manager;
     private AsyncHttpClient client;
     private WebSocket websocket;
+    // the websocket url of this client
     private String url;
+    // a map to store all inbound items connected to this client : itemName -> bindingProvider*
     private Map<String, WebsocketClientBindingProvider> listeners = 
         Collections.synchronizedMap(new HashMap<String, WebsocketClientBindingProvider>());
+    // the reference count of inbound and outbound items associated with this client
     private int count;
         
     public WebsocketClient(String url, AsyncHttpClientConfig config, WebsocketClientManager manager) {

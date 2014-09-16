@@ -12,7 +12,9 @@ import org.openhab.binding.websocketclient.WebsocketClientBindingProvider;
 //REVISIT if this is a good way of managing the websockets used by all the configured items
 class WebsocketClientManager {
     private WebsocketClientBinding clientBinding;
+    // a map to store a client for the given url
     private Map<String, WebsocketClient> urlclients;
+    // a map to store all clients associted for the given itemName
     private Map<String, List<WebsocketClient>> itemclients;
 
     public WebsocketClientManager(WebsocketClientBinding clientBinding) {
@@ -50,7 +52,7 @@ class WebsocketClientManager {
                 }
                 icls.add(wc);
             }
-            // increment the reference count
+            // increment the reference count for the inbound item referencing this client
             wc.register(itemName, provider);
         }
         return wc;
