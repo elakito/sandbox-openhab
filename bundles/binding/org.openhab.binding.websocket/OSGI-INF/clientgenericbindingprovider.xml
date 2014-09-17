@@ -9,12 +9,12 @@
     http://www.eclipse.org/legal/epl-v10.html
 
 -->
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.openhab.binding.websocketclient.genericbindingprovider">
-   <implementation class="org.openhab.binding.websocketclient.internal.WebsocketClientGenericBindingProvider"/>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.openhab.binding.websocket.clientgenericbindingprovider">
+   <implementation class="org.openhab.binding.websocket.internal.WebsocketClientGenericBindingProvider"/>
    
    <service>
       <provide interface="org.openhab.model.item.binding.BindingConfigReader"/>
-      <provide interface="org.openhab.binding.websocketclient.WebsocketClientBindingProvider"/>
+      <provide interface="org.openhab.binding.websocket.WebsocketClientBindingProvider"/>
    </service>
    
 </scr:component>

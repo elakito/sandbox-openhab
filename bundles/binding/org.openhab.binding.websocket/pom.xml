@@ -9,17 +9,17 @@
   </parent>
 
   <properties>
-    <bundle.symbolicName>org.openhab.binding.websocketclient</bundle.symbolicName>
-    <bundle.namespace>org.openhab.binding.websocketclient</bundle.namespace>
-    <deb.name>openhab-addon-binding-WebsocketClient</deb.name>
-    <deb.description>openhab addon binding WebsocketClient</deb.description>
+    <bundle.symbolicName>org.openhab.binding.websocket</bundle.symbolicName>
+    <bundle.namespace>org.openhab.binding.websocket</bundle.namespace>
+    <deb.name>openhab-addon-binding-Websocket</deb.name>
+    <deb.description>openhab addon binding Websocket</deb.description>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.openhab.binding</groupId>
-  <artifactId>org.openhab.binding.websocketclient</artifactId>
+  <artifactId>org.openhab.binding.websocket</artifactId>
 
-  <name>openHAB WebsocketClient Binding</name>
+  <name>openHAB Websocket Binding</name>
 
   <packaging>eclipse-plugin</packaging>
 

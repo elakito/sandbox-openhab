@@ -6,16 +6,16 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openhab.binding.websocketclient.internal;
+package org.openhab.binding.websocket.internal;
 
-import static org.openhab.binding.websocketclient.internal.WebsocketClientGenericBindingProvider.CHANGED_COMMAND_KEY;
-import static org.openhab.binding.websocketclient.internal.WebsocketClientGenericBindingProvider.IN_COMMAND_KEY;
+import static org.openhab.binding.websocket.internal.WebsocketClientGenericBindingProvider.CHANGED_COMMAND_KEY;
+import static org.openhab.binding.websocket.internal.WebsocketClientGenericBindingProvider.IN_COMMAND_KEY;
 
 import java.util.Dictionary;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.openhab.binding.websocketclient.WebsocketClientBindingProvider;
+import org.openhab.binding.websocket.WebsocketClientBindingProvider;
 import org.apache.commons.lang.StringUtils;
 import org.openhab.core.binding.AbstractActiveBinding;
 import org.openhab.core.binding.BindingProvider;

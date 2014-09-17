@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openhab.binding.websocketclient.internal;
+package org.openhab.binding.websocket.internal;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

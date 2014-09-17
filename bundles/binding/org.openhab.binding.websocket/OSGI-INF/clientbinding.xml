@@ -9,22 +9,22 @@
     http://www.eclipse.org/legal/epl-v10.html
 
 -->
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" name="org.openhab.binding.websocketclient.binding">
-	<implementation class="org.openhab.binding.websocketclient.internal.WebsocketClientBinding" />
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" name="org.openhab.binding.websocket.binding.client">
+	<implementation class="org.openhab.binding.websocket.internal.WebsocketClientBinding" />
 
 	<service>
 		<provide interface="org.osgi.service.event.EventHandler" />
 		<provide interface="org.osgi.service.cm.ManagedService" />
 	</service>
 
-	<property name="event.topics" type="String" value="openhab/command/*" />
-	<property name="service.pid" type="String" value="org.openhab.websocketclient" />
+	<property name="event.topics" type="String" value="openhab/*" />
+	<property name="service.pid" type="String" value="org.openhab.websocket.client" />
 
 	<reference bind="setEventPublisher" cardinality="1..1"
 		interface="org.openhab.core.events.EventPublisher" name="EventPublisher"
 		policy="dynamic" unbind="unsetEventPublisher" />
 	<reference bind="addBindingProvider" cardinality="1..n"
-		interface="org.openhab.binding.websocketclient.WebsocketClientBindingProvider" name="WebsocketClientBindingProvider"
+		interface="org.openhab.binding.websocket.WebsocketClientBindingProvider" name="WebsocketClientBindingProvider"
 		policy="dynamic" unbind="removeBindingProvider" />
 	
 </scr:component>

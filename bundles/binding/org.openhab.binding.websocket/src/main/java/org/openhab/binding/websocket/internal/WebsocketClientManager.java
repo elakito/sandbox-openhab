@@ -1,4 +1,4 @@
-package org.openhab.binding.websocketclient.internal;
+package org.openhab.binding.websocket.internal;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.openhab.binding.websocketclient.WebsocketClientBindingProvider;
+import org.openhab.binding.websocket.WebsocketClientBindingProvider;
 
 //REVISIT if this is a good way of managing the websockets used by all the configured items
 class WebsocketClientManager {

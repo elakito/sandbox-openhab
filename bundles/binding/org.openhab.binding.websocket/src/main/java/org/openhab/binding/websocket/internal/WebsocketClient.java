@@ -1,11 +1,11 @@
-package org.openhab.binding.websocketclient.internal;
+package org.openhab.binding.websocket.internal;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.binding.websocketclient.WebsocketClientBindingProvider;
+import org.openhab.binding.websocket.WebsocketClientBindingProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
