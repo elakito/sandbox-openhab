@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Private-Package: org.openhab.binding.camel.internal
+Ignore-Package: org.openhab.binding.camel.internal
+Bundle-License: http://www.eclipse.org/legal/epl-v10.html
+Bundle-Name: openHAB Camel Binding
+Bundle-SymbolicName: org.openhab.binding.camel
+Bundle-Vendor: openHAB.org
+Bundle-Version: 1.6.0.qualifier
+Bundle-Activator: org.openhab.binding.camel.internal.CamelActivator
+Bundle-ManifestVersion: 2
+Bundle-Description: This is the Camel binding of the open Home Aut
+ omation Bus (openHAB)
+Import-Package: org.apache.camel;version="[2.12,3)",
+ org.apache.camel.component.directvm;version="[2.12,3)",
+ org.apache.camel.impl;version="[2.12,3)",
+ org.apache.camel.support;version="[2.12,3)",
+ org.apache.commons.lang,
+ org.openhab.core.binding,
+ org.openhab.core.events,
+ org.openhab.core.items,
+ org.openhab.core.library.items,
+ org.openhab.core.library.types,
+ org.openhab.core.types,
+ org.openhab.core.transform,
+ org.openhab.model.item.binding,
+ org.osgi.framework,
+ org.osgi.service.cm,
+ org.osgi.service.component,
+ org.osgi.service.event,
+ org.slf4j
+Export-Package: org.openhab.binding.camel
+Bundle-DocURL: http://www.openhab.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Service-Component: OSGI-INF/dispatcherbinding.xml, OSGI-INF/dispatchergenericbindingprovider.xml, OSGI-INF/providerbinding.xml, OSGI-INF/providergenericbindingprovider.xml
+Bundle-ClassPath: .
