@@ -133,7 +133,7 @@ public abstract class AbstractCamelConnectorBinding<P extends CamelBindingProvid
     public void updated(Dictionary<String, ?> config) throws ConfigurationException {
         logger.debug("Configuration updated with provided {}", config != null);
         if (config != null) {
-			// setup            
+            // setup
         }
         for (CamelBindingProvider provider : providers) {
             for (String itemName : provider.getItemNames()) {
@@ -147,11 +147,11 @@ public abstract class AbstractCamelConnectorBinding<P extends CamelBindingProvid
         for (Command command : provider.getCommands(itemName)) {
             String name = provider.getName(itemName, command);
             try {
-            	connectorManager.add(itemName, name, provider);
+                connectorManager.add(itemName, name, provider);
             } catch (Exception e) {
-            	logger.error("Failed to add dispatcher " + name, e);
+                logger.error("Failed to add dispatcher " + name, e);
             }
-	    }
+        }
     }
         
     private void releaseItem(String itemName) {
@@ -161,29 +161,26 @@ public abstract class AbstractCamelConnectorBinding<P extends CamelBindingProvid
         
     protected static String transformMessage(String transformation, String message) {
         logger.debug("transforming message {} using transform {}", message, transformation);
-        String transformedMessage;
-        try {
-            String[] parts = splitTransformationConfig(transformation);
-            String transformationType = parts[0];
-            String transformationFunction = parts[1];
+        String transformedMessage = message;
+        if (transformation != null) {
+            try {
+                String[] parts = splitTransformationConfig(transformation);
+                String transformationType = parts[0];
+                String transformationFunction = parts[1];
             
-            TransformationService transformationService = 
-                TransformationHelper.getTransformationService(CamelActivator.getContext(), transformationType);
-            if (transformationService != null) {
-                transformedMessage = transformationService.transform(transformationFunction, message);
-            } else {
-                transformedMessage = message;
-                logger.warn("couldn't transform message because transformationService of type '{}' is unavailable", transformationType);
+                TransformationService transformationService = 
+                    TransformationHelper.getTransformationService(CamelActivator.getContext(), transformationType);
+                if (transformationService != null) {
+                    transformedMessage = transformationService.transform(transformationFunction, message);
+                } else {
+                    logger.warn("couldn't transform message because transformationService of type '{}' is unavailable", transformationType);
+                }
+            }
+            catch (Exception te) {
+                logger.error("transformation throws exception [transformation="
+                             + transformation + ", message=" + message + "]", te);
             }
         }
-        catch (Exception te) {
-            logger.error("transformation throws exception [transformation="
-                         + transformation + ", message=" + message + "]", te);
-
-            // in case of an error we return the message without any transformation
-            transformedMessage = message;
-        }
-
         logger.debug("transformed message is '{}'", transformedMessage);
         return transformedMessage;
     }
@@ -204,5 +201,4 @@ public abstract class AbstractCamelConnectorBinding<P extends CamelBindingProvid
     }
     
     protected abstract AbstractCamelConnectorManager<P> createConnectorManager(AbstractCamelConnectorBinding<P> binding);
-    	
 }
